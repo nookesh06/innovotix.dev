@@ -2110,45 +2110,90 @@ footer {
         font-size: 11px;
         line-height: 1.5;
     }
+/* FIX: Keep robot beside and behind mobile hero text */
+@media screen and (max-width: 650px) {
 
-    /* Robot overlaps the text area instead of appearing below it */
-    .home-hero-full .hero-robot-journey {
-        position: absolute;
-        z-index: 2;
-        top: 18%;
-        right: -18%;
-        width: 78%;
-        height: 68%;
-        opacity: 0.95;
-        pointer-events: none;
+    .home-hero-full {
+        position: relative !important;
+        height: 95svh !important;
+        min-height: 700px !important;
+        overflow: hidden !important;
     }
 
-    .home-hero-full .hero-robot-journey img {
-        width: 100%;
-        height: 100%;
-        object-fit: contain;
-        object-position: center center;
+    /* Remove the reserved space below the text */
+    .home-hero-full .hero-content {
+        position: relative !important;
+        z-index: 6 !important;
+        width: calc(100% - 36px) !important;
+        padding: 0 !important;
+        margin: 0 auto !important;
+    }
+
+    .home-hero-full .hero-copy {
+        position: relative !important;
+        z-index: 6 !important;
+        width: 100% !important;
+        max-width: 100% !important;
+    }
+
+    /* Keep text readable on the left */
+    .home-hero-full h1,
+    .home-hero-full .hero-copy > p,
+    .home-hero-full .eyebrow {
+        position: relative;
+        z-index: 7;
+        max-width: 78%;
+    }
+
+    .home-hero-full .hero-copy > p {
+        font-size: 12px !important;
+        line-height: 1.5 !important;
     }
 
     .home-hero-full .hero-actions {
         position: relative;
-        z-index: 6;
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 9px;
-        margin-top: 18px;
+        z-index: 8;
         width: 75%;
+        max-width: 300px;
     }
 
-    .home-hero-full .hero-actions .btn {
-        width: 100%;
-        min-height: 40px;
-        font-size: 10px;
+    /* Move robot UP beside the text */
+    .home-hero-full .hero-robot-journey {
+        position: absolute !important;
+        top: 8% !important;
+        right: -24% !important;
+        bottom: auto !important;
+        left: auto !important;
+        width: 95% !important;
+        height: 78% !important;
+        z-index: 2 !important;
+        opacity: 0.9 !important;
+        pointer-events: none;
     }
 
-    .home-hero-full .hero-scroll {
-        z-index: 7;
-        bottom: 15px;
+    .home-hero-full .hero-robot-journey img {
+        width: 100% !important;
+        height: 100% !important;
+        object-fit: contain !important;
+        object-position: center top !important;
+    }
+
+    /* Keep the background behind the robot */
+    .home-hero-full .hero-media {
+        position: absolute !important;
+        inset: 0 !important;
+        width: 100% !important;
+        height: 100% !important;
+        min-height: 0 !important;
+        z-index: 0 !important;
+    }
+
+    .home-hero-full .hero-shade {
+        background: linear-gradient(
+            90deg,
+            rgba(5, 13, 25, 0.96) 0%,
+            rgba(5, 13, 25, 0.82) 45%,
+            rgba(5, 13, 25, 0.25) 100%
+        ) !important;
     }
 }
